@@ -74,4 +74,61 @@ class Library{
             System.out.println();
         }
     }}
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Library library = new Library();
+
+        while (true) {
+            System.out.println("1. ajouter un livre \n___________________");
+            System.out.println("2. supprimer un livre \n___________________");
+            System.out.println("3. afficher des livres\n___________________");
+            System.out.println("4. ajouter un éleve \n___________________");
+            System.out.println("5. supprimer un éleve \n___________________");
+            System.out.println("6. afficher des éleve\n___________________");
+            System.out.println("7. exit");
+
+            int choice = scanner.nextInt();
+
+            if (choice == 1) {
+                scanner.nextLine();
+                System.out.print("Enter title: ");
+                String title = scanner.nextLine();
+                System.out.print("Enter author: ");
+                String author = scanner.nextLine();
+                System.out.print("Enter ISBN: ");
+                String ISBN = scanner.nextLine();
+                library.addBook(new Book(title, author, ISBN));
+            } else if (choice == 2) {
+                scanner.nextLine(); // to consume the newline character
+                System.out.print("Enter ISBN: ");
+                String ISBN = scanner.nextLine();
+                library.removeBook(ISBN);
+            } else if (choice == 3) {
+                library.displayBooks();
+            }
+            else if (choice == 4){
+                scanner.nextLine();
+                System.out.print("Enter name: ");
+                String name = scanner.nextLine();
+                System.out.print("Enter studentId: ");
+                String studentId = scanner.nextLine();
+                System.out.print("Enter adrress: ");
+                String adrress = scanner.nextLine();
+                library.addStudent(new Student(name, studentId, adrress));}
+
+            else if (choice == 5) {
+                scanner.nextLine();
+                System.out.print("Enter name: ");
+                String name = scanner.nextLine();
+                library.removeStudent(name);
+            }
+            else if (choice == 6) {
+                library.displayStudents();
+            }
+            else if (choice == 7) {
+                break;
+            }
+        }
+    }}
 
